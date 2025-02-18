@@ -209,6 +209,8 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
 
+  {"ellisonleao/glow.nvim", config = true, cmd = "Glow"},
+
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
@@ -327,6 +329,10 @@ vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = 
 
 -- [[ Configure oil ]]
 require("oil").setup()
+vim.keymap.set("n", "-", ":Oil<CR>", { desc = "Open Oil in current directory" })
+
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
@@ -402,6 +408,9 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous dia
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+
+vim.keymap.set('n', ']q', ':cnext<CR>', { desc = 'Go to next quickfix item' })
+vim.keymap.set('n', '[q', ':cprev<CR>', { desc = 'Go to previous quickfix item' })
 
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
@@ -562,11 +571,11 @@ cmp.setup {
 }
 
 require('rose-pine').setup({
-	--- @usage 'auto'|'main'|'moon'|'dawn'
-	variant = 'auto',
-	--- @usage 'main'|'moon'|'dawn'
-	dark_variant = 'main',
-	disable_italics = true,
+        --- @usage 'auto'|'main'|'moon'|'dawn'
+        variant = 'auto',
+        --- @usage 'main'|'moon'|'dawn'
+        dark_variant = 'main',
+        disable_italics = true,
 })
 
 --vim.cmd('colorscheme rose-pine')
@@ -574,7 +583,6 @@ vim.cmd('colorscheme moonfly')
 --vim.cmd('colorscheme everforest')
 --vim.cmd.term { 'cat', '%', '|', 'delta', '--paging=always' }
 
-vim.g.zig_fmt_autosave = 0
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
