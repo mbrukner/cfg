@@ -574,6 +574,7 @@ vim.cmd('colorscheme moonfly')
 --vim.cmd('colorscheme everforest')
 --vim.cmd.term { 'cat', '%', '|', 'delta', '--paging=always' }
 
+vim.g.zig_fmt_autosave = 0
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
